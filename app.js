@@ -1,4 +1,5 @@
-document.getElementById("leadForm").addEventListener("submit", function (event) {
+<script>
+  document.getElementById("leadForm").addEventListener("submit", async function (event) {
     event.preventDefault(); // Prevent form from refreshing the page
     
     // Gather form data
@@ -9,23 +10,30 @@ document.getElementById("leadForm").addEventListener("submit", function (event) 
       projectPreferences: document.getElementById("projectPreferences").value,
       budget: document.getElementById("budget").value,
     };
-  
+
     // Send data to the backend
-    fetch('http://localhost:3000/api/leads', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formData),
-    })
-    .then(response => response.json())
-    .then(data => {
-      alert("Your submission was successful!");
-      console.log(data); // For debugging purposes
-    })
-    .catch((error) => {
+    try {
+      const response = await fetch("https://my-backend-ar9m.onrender.com/api/leads", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      // Handle the response from the backend
+      const result = await response.json();
+      
+      if (response.ok) {
+        alert("Your submission was successful!");
+        console.log(result); // For debugging purposes
+      } else {
+        alert("There was an error submitting the form. Please try again.");
+        console.error("Error:", result.error);
+      }
+    } catch (error) {
       alert("There was an error submitting the form.");
       console.error("Error:", error);
-    });
+    }
   });
-  
+</script>
