@@ -4,36 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Real Estate Landing Page</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css"> <!-- Link to your CSS file -->
 </head>
 <body>
+
     <div class="container">
-        <h1>Invest in Prime Real Estate</h1>
-        <p>Fill out the form below to get exclusive deals.</p>
+        <h1>Invest in Premium Properties</h1>
+        <p>Fill in the details below and we will contact you.</p>
 
         <form id="leadForm">
-            <label for="name">Name:</label>
-            <input type="text" id="name" required><br>
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" required>
 
             <label for="email">Email:</label>
-            <input type="email" id="email" required><br>
+            <input type="email" id="email" name="email" required>
 
-            <label for="phone">Phone:</label>
-            <input type="text" id="phone" required><br>
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" required>
 
             <label for="projectPreferences">Project Preferences:</label>
-            <textarea id="projectPreferences" required></textarea><br>
+            <input type="text" id="projectPreferences" name="projectPreferences">
 
-            <label for="budget">Budget:</label>
-            <input type="number" id="budget" required><br>
+            <label for="budget">Budget (in USD):</label>
+            <input type="number" id="budget" name="budget">
 
             <button type="submit">Submit</button>
         </form>
 
-        <p id="successMessage" style="display:none; color: green;">Form submitted successfully!</p>
+        <!-- ✅ Message will be displayed here after submission -->
+        <p id="formMessage"></p>
     </div>
 
-    <script src="app.js"></script>
+    <script src="app.js"></script> <!-- Link to JavaScript file -->
 </body>
 </html>
+
 
